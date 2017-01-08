@@ -1,16 +1,39 @@
 <form novalidate name="$ctrl.usernameForm" ng-submit="$ctrl.submitForm($ctrl.user.username, $ctrl.user.password)">
 
   <div>
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" ng-model="$ctrl.user.username"/>
+    <label for="username" ng-class="{'has-error' : $ctrl.usernameForm.username.$invalid && $ctrl.usernameForm.username.$touched}">Username</label>
+    <input id="username" name="username" type="text"
+    ng-model="$ctrl.user.username" required ng-minlength="3" ng-maxlength="11"/>
   </div>
 
   <div>
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" ng-model="$ctrl.user.password"/>
+    <label for="password" ng-class="{'has-error' : $ctrl.usernameForm.password.$invalid && $ctrl.usernameForm.password.$touched}">Password</label>
+    <input id="password" name="password" type="password"
+    ng-model="$ctrl.user.password" required ng-minlength="3" ng-maxlength="11"/>
+
   </div>
 
-  <button type="submit">Submit</button>
-  <button ng-click="$ctrl.resetForm()">Reset</button>
+  <div>
+    <button type="submit" ng-disable="$ctrl.usernameForm.$invalid">Submit</button>
+    <button ng-click="$ctrl.resetForm()">Reset</button>
+  </div>
+
+  <div>
+    <p ng-if="$ctrl.usernameForm.username.$invalid && $ctrl.usernameForm.username.$touched">
+      Username must be greater than 2 and less than 12 characters in length.
+    </p>
+    <p ng-if="$ctrl.usernameForm.password.$invalid && $ctrl.usernameForm.password.$touched">
+      Password must be greater than 2 and less than 12 characters in length.
+    </p>
+  </div>
+
+  <div>
+    <p>
+      Your username: {{$ctrl.user.username}}
+    </p>
+    <p>
+      Your password: {{$ctrl.user.password}}
+    </p>
+  </div>
 
 </form>

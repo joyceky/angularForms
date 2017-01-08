@@ -16,10 +16,14 @@
     vm.resetForm = resetForm;
     vm.user = {};
 
-
     function submitForm(username, password) {
       if(username && password) {
         console.log(username, password);
+
+        // vm.user.name = username;
+        // vm.user.password = password;
+
+        console.log(vm.user);
       }
     }
 
