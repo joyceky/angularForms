@@ -1,3 +1,16 @@
-<p>
-  Hello world from the form component
-</p>
+<form novalidate name="$ctrl.usernameForm" ng-submit="$ctrl.submitForm($ctrl.user.username, $ctrl.user.password)">
+
+  <div>
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text" ng-model="$ctrl.user.username"/>
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" ng-model="$ctrl.user.password"/>
+  </div>
+
+  <button type="submit">Submit</button>
+  <button ng-click="$ctrl.resetForm()">Reset</button>
+
+</form>
